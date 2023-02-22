@@ -1,0 +1,28 @@
+{
+  "name": "nodejs_udemy",
+  "version": "1.0.0",
+  "description": "Udemy Course hands on",
+  "main": "routes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samjzero019/NodeJS_Udemy.git"
+  },
+  "keywords": [],
+  "author": "Sam J. Zero",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samjzero019/NodeJS_Udemy/issues"
+  },
+  "homepage": "https://github.com/samjzero019/NodeJS_Udemy#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2"
+  }
+}

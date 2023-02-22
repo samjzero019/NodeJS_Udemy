@@ -1,18 +1,20 @@
 /**
- * This file will be starting point of all the other files
- * This file will create the server instance with the use of http core module
- * which will  use request and response functionalities to communicate with the frontend/browser
- *
  */
 
-//info
-const http = require("http");
+const express = require("express");
+const parser = require("body-parser");
 
-const routes = require("./routes");
+const router = require('./routes/routes')
+const app = express();
 
-console.log("routes", routes);
-// server instance which is  listening for request and will be providing the response  as per need
-const server = http.createServer(routes);
+// using npm package to parse every request for possible data
+app.use(parser.urlencoded({ extended: false }));  //# needs to be on top .. so that every request could be parsed before reaching its relative handler
+
+// now call to router which will auto create middleware for it 
+
+app.use(router)
+
+
 
 // request source/ source for which server instance will listen the request
-server.listen(3000, "localhost");
+app.listen(3000, "localhost");

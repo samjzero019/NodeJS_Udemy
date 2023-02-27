@@ -1,42 +1,27 @@
-const path = require("path");
+
 
 const express = require("express");
-
 const router = express.Router();
 
-const rootPath = require("../utils/getRootPath")
-console.log(rootPath)
+
+
+const homeController = require('./../controllers/homeController')
+const contactUsController = require('../controllers/contactUsController')
+const errorController = require('../controllers/errorController')
 //======= Custom Paths Start
 //? home
 
-router.get("/", (req, res, next) => {
-  res
-    .status(200)
-    .sendFile(path.join(rootPath, "views", "home", "home.html"));
-});
+router.get("/", homeController.home);
 
 //? contact-us
 
-router.get("/contact", (req, res, next) => {
-  res
-    .status(200)
-    .sendFile(path.join(rootPath, "views", "contact", "contact.html"));
-});
+router.get("/contact",contactUsController.contactPage);
 //? contact-list
-router.post("/contact-data", (req, res, next) => {
-  res
-    .status(200)
-    .sendFile(path.join(rootPath, "apis", "contact-data.js"));
-});
+router.post("/contact-data",contactUsController.handleContactUs);
 
 // ============ Custom Paths ENDS
 
 // Handle Unhandled requests
-router.use((req, res, next) => {
-  //# can omit path as it not required
-  res
-    .status(404)
-    .sendFile(path.join(__dirname, "../", "views", "404", "404.html")); // using path.join() instead of concating directly slashed path so that this could work for both linux and windows path
-});
+router.use(errorController.get404Page);
 
 module.exports = router;
